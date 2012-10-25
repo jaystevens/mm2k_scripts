@@ -1,0 +1,1 @@
+/action {Your gain is: %0 hp %1 mana %2 moves} {gos Your gain is $0 hp $1 mana $2 moves} {}

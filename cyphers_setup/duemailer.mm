@@ -1,0 +1,1 @@
+/alias {duemail %0} {mail $0;You Have not paid your clan dues.;Please mail me 1 silver bar ASAP.;@Chr(10);-Gerrerd-;\@s} {duemailer}
