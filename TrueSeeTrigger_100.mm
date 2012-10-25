@@ -1,0 +1,4 @@
+/act {^[CLAN]: %0 says, 'where is %1?'.} {/enableaction {^You can make out an image of %0...};c true $1} {illautosee}
+/act {^You can make out an image of %0...} {/var tsperson $0;/act {%0} {/var tsroom $0;/unact %0;cl I spy in my all-seeing eye $tsperson in $tsroom;/disableaction {^You can make out an image of %0...}}} {illautosee}
+/alias {trueon} {/enablegroup illautosee;/showme {@Chr(10)@AnsiReset()@AnsiBold()@ForeCyan()True See Trigger @ForeRed()DISABLED @AnsiReset()}} {illautoseecontrol}
+/alias {trueoff} {/disablegroup illautosee;/showme {@Chr(10)@AnsiReset()@AnsiBold()@ForeCyan()True See Trigger @ForeRed()ENABLED @AnsiReset()}} {illautoseecontrol}
