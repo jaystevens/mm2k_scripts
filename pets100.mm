@@ -12,11 +12,11 @@
 /remark { /alias {petsid %1 %2 %3 %4 %5 %6} {clearpets2;/var Pet1 $1;/var Pet2 $2;/var Pet3 $3;/var Pet4 $4;/var Pet5 $5;/var Pet6 $6;showpets}  {PETS_100} }
 
 /alias {petid1 %1} {/var Pet1 $1;/showme {@AnsiReset()@AnsiBold()@ForeGreen()Pet1 is now '$1'@AnsiReset()}} {PETS_100}
-/alias {petid2 %2} {/var Pet2 $1;/showme {@AnsiReset()@AnsiBold()@ForeGreen()Pet2 is now '$1'@AnsiReset()}} {PETS_100}
-/alias {petid3 %3} {/var Pet3 $1;/showme {@AnsiReset()@AnsiBold()@ForeGreen()Pet3 is now '$1'@AnsiReset()}} {PETS_100}
-/alias {petid4 %4} {/var Pet4 $1;/showme {@AnsiReset()@AnsiBold()@ForeGreen()Pet4 is now '$1'@AnsiReset()}} {PETS_100}
-/alias {petid5 %5} {/var Pet5 $1;/showme {@AnsiReset()@AnsiBold()@ForeGreen()Pet5 is now '$1'@AnsiReset()}} {PETS_100}
-/alias {petid6 %6} {/var Pet6 $1;/showme {@AnsiReset()@AnsiBold()@ForeGreen()Pet6 is now '$1'@AnsiReset()}} {PETS_100}
+/alias {petid2 %1} {/var Pet2 $1;/showme {@AnsiReset()@AnsiBold()@ForeGreen()Pet2 is now '$1'@AnsiReset()}} {PETS_100}
+/alias {petid3 %1} {/var Pet3 $1;/showme {@AnsiReset()@AnsiBold()@ForeGreen()Pet3 is now '$1'@AnsiReset()}} {PETS_100}
+/alias {petid4 %1} {/var Pet4 $1;/showme {@AnsiReset()@AnsiBold()@ForeGreen()Pet4 is now '$1'@AnsiReset()}} {PETS_100}
+/alias {petid5 %1} {/var Pet5 $1;/showme {@AnsiReset()@AnsiBold()@ForeGreen()Pet5 is now '$1'@AnsiReset()}} {PETS_100}
+/alias {petid6 %1} {/var Pet6 $1;/showme {@AnsiReset()@AnsiBold()@ForeGreen()Pet6 is now '$1'@AnsiReset()}} {PETS_100}
 /alias {clearpetid1} {/empty Pet1;/showme {@AnsiReset()@AnsiBold()@ForeGreen()Pet1 is now Empty@AnsiReset()}} {PETS_100}
 /alias {clearpetid2} {/empty Pet2;/showme {@AnsiReset()@AnsiBold()@ForeGreen()Pet2 is now Empty@AnsiReset()}} {PETS_100}
 /alias {clearpetid3} {/empty Pet3;/showme {@AnsiReset()@AnsiBold()@ForeGreen()Pet3 is now Empty@AnsiReset()}} {PETS_100}

@@ -1,0 +1,76 @@
+/remark {HtmlLog Script for MM2K, version 0.88}
+
+/remark {-----------}
+/remark {HTML Colors}
+/remark {-----------}
+
+/variable {HTML_BLUE}         {#0000C4} {HtmlLog}
+/variable {HTML_GREEN}        {#00C400} {HtmlLog}
+/variable {HTML_CYAN}         {#00C4C4} {HtmlLog}
+/variable {HTML_RED}          {#C40000} {HtmlLog}
+/variable {HTML_MAGENTA}      {#C400C4} {HtmlLog}
+/variable {HTML_BROWN}        {#FFFF00} {HtmlLog}
+/variable {HTML_LIGHTGRAY}    {#C4C4C4} {HtmlLog}
+/variable {HTML_DARKGRAY}     {#646464} {HtmlLog}
+/variable {HTML_LIGHTBLUE}    {#3C3CFF} {HtmlLog}
+/variable {HTML_LIGHTGREEN}   {#3CFF3C} {HtmlLog}
+/variable {HTML_LIGHTCYAN}    {#3CFFFF} {HtmlLog}
+/variable {HTML_LIGHTRED}     {#FF3C3C} {HtmlLog}
+/variable {HTML_LIGHTMAGENTA} {#FF3CFF} {HtmlLog}
+/variable {HTML_LIGHTYELLOW}  {#FFFF00} {HtmlLog}
+/variable {HTML_WHITE}        {#FFFFFF} {HtmlLog}
+/variable {HTML_BLACK}        {#000000} {HtmlLog}
+
+/remark {--------------------------------------}
+/remark {Do Not Modify Anything Below This Line}
+/remark {--------------------------------------}
+
+/remark {We use @Chr(17) for < and @Chr(18) for >. The HtmlLog.dll understands this.}
+/remark {We have to use the escapes because the HtmlLog.dll will normally translate < and > into $lt; and &gt; respectively.}
+/remark {We use @Chr(19) to represent the end of the line, since otherwise the DLL seems to have problems with MM2K.}
+
+/alias {HtmlLogOpenAppend %0} {/loadlibrary HtmlLog;/enablegroup HtmlLog;/calldll {HtmlLog} {HtmlLogOpenAppend} {$0}} {HtmlLogAlias}
+/alias {HtmlLogClose %0} {/disablegroup HtmlLog;/calldll {HtmlLog} {HtmlLogClose};/freelibrary HtmlLog} {HtmlLogAlias}
+/remark {There is also a WriteLine function, but that should only be used by this script, really, unless you want to get fancy.}
+
+/action {^%0} {HtmlInitVars $0;/loop {0,$HtmlAnsiInputStringLen} {/var {HtmlOneStorage} {@CharColor(@Math($LoopCount + 1))};/var {HtmlTwoStorage} {@Mid($0,$LoopCount,1)};HtmlAppendToString};/var {HtmlLogStringStore} {$HtmlLogStringStore@Chr(19)};SendLineToHtmlLog $HtmlLogStringStore} {HtmlLog}
+
+/empty {HtmlLogStringStore} {HtmlLog}
+/variable {HtmlAnsiInputStringLen} {0} {HtmlLog}
+/empty {HtmlCurrentWord} {HtmlLog}
+/variable {HtmlLastWordColor} {7} {HtmlLog}
+/empty {HtmlCurrentColorTag} {HtmlLog}
+/variable {HtmlTagsLaid} {0} {HtmlLog}
+/variable {HtmlArrayColor} {-1} {HtmlLog}
+/remark {We use these to get around some MudMaster super-weirdness with variable passing.}
+/empty {HtmlOneStorage} {HtmlLog}
+/empty {HtmlTwoStorage} {HtmlLog}
+
+/alias {HtmlInitVars %0} {/empty {HtmlOneStorage} {HtmlLog};/empty {HtmlTwoStorage} {HtmlLog};/empty {HtmlLogStringStore} {HtmlLog};/var {HtmlAnsiInputStringLen} {@Math(@Len($0) - 1)} {HtmlLog}} {HtmlLog}
+
+/alias {HtmlAppendToString} {/empty {HtmlCurrentWord};HtmlGetCorrectColor $HtmlOneStorage;/var {HtmlCurrentWord} {$HtmlCurrentColor$HtmlCurrentWord};/var {HtmlCurrentWord} {$HtmlCurrentWord$HtmlTwoStorage};/var {HtmlLogStringStore} {$HtmlLogStringStore$HtmlCurrentWord}} {HtmlLog}
+
+/alias {HtmlGetCorrectColor %3} {/empty {HtmlCurrentColor};/var {HtmlArrayColor} {-1};/if {$3 = $HtmlLastWordColor} {;} {/if {$HtmlTagsLaid && $HtmlLastWordColor != 7} {/var {HtmlCurrentColor} {@Chr(17)/font@Chr(18)}};/if {$3 == 0} {/var HtmlArrayColor 16} {/var HtmlArrayColor $3};/var {HtmlCurrentColor} {$HtmlCurrentColor@GetArray(Html_Colors,$HtmlArrayColor,0)};/var {HtmlTagsLaid} {1}};/var {HtmlLastWordColor} {$3}} {HtmlLog}
+
+/alias {SendLineToHtmlLog %0} {/calldll {HtmlLog} {WriteLine} {$0}} {HtmlLog}
+
+/array {Html_Colors} {17} {HtmlLog}
+/assign {Html_Colors} {1}  {@Chr(17)font color = @Var(HTML_BLUE)@Chr(18)}
+/assign {Html_Colors} {2}  {@Chr(17)font color = @Var(HTML_GREEN)@Chr(18)}
+/assign {Html_Colors} {3}  {@Chr(17)font color = @Var(HTML_CYAN)@Chr(18)}
+/assign {Html_Colors} {4}  {@Chr(17)font color = @Var(HTML_RED)@Chr(18)}
+/assign {Html_Colors} {5}  {@Chr(17)font color = @Var(HTML_MAGENTA)@Chr(18)}
+/assign {Html_Colors} {6}  {@Chr(17)font color = @Var(HTML_BROWN)@Chr(18)}
+/remark {Number 7 is empty, since that's the default color. We shouldn't ever have to paste something in for it.}
+/assign {Html_Colors} {7}  {@Chr(17)!-- gray --@Chr(18)}
+/assign {Html_Colors} {8}  {@Chr(17)font color = @Var(HTML_DARKGRAY)@Chr(18)}
+/assign {Html_Colors} {9}  {@Chr(17)font color = @Var(HTML_LIGHTBLUE)@Chr(18)}
+/assign {Html_Colors} {10} {@Chr(17)font color = @Var(HTML_LIGHTGREEN)@Chr(18)}
+/assign {Html_Colors} {11} {@Chr(17)font color = @Var(HTML_LIGHTCYAN)@Chr(18)}
+/assign {Html_Colors} {12} {@Chr(17)font color = @Var(HTML_LIGHTRED)@Chr(18)}
+/assign {Html_Colors} {13} {@Chr(17)font color = @Var(HTML_LIGHTMAGENTA)@Chr(18)}
+/assign {Html_Colors} {14} {@Chr(17)font color = @Var(HTML_LIGHTYELLOW)@Chr(18)}
+/assign {Html_Colors} {15} {@Chr(17)font color = @Var(HTML_WHITE)@Chr(18)}
+/assign {Html_Colors} {16} {@Chr(17)font color = @Var(HTML_BLACK)@Chr(18)}
+
+/disablegroup HtmlLog
