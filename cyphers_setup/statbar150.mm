@@ -27,6 +27,7 @@
 /action {You are resting.} {/variable {mestatus} {Resting} {stabar}} {statbar}
 /action {You stop resting, and sit up.} {/variable {mestatus} {Sitting} {statbar}} {statbar}
 /action {You sit down.} {/variable {mestatus} {Sitting} {statbar}} {statbar}
+/action {%0 charges into you, knocking you to the ground.} {/variable {mestatus} {Sitting} {statbar}} {statbar}
 /alias {resetme} {/variable {mestatus} {Standing} {statbar}} {statbar}
 /alias {resetfinds} {/variable {Relics} {0} {statbar};/variable {Orbs} {0} {statbar};/variable {Gems} {0} {statbar}} {statbar}
 /alias {resetsanc} {/variable {sancstatus} {Off} {statbar}} {statbar}

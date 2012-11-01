@@ -1,6 +1,5 @@
-/read password.mm
-
 /alias {wform} {grep Form who} {}
+/alias {f?} {grep Form who} {}
 
 /alias {fi %1} {/variable {ficounter} {$1};/loop {1,$ficounter} {search $LoopCount.corpse};get gold all.corpse;get map all.corpse} {Dfinder}
 /alias {fion} {/macro {kp 1} {fi 1};/macro {kp 2} {fi 2};/macro {kp 3} {fi 3};/macro {kp 4} {fi 4};/macro {kp 5} {fi 5};/macro {kp 6} {fi 6};/macro {kp 7} {fi 7};/macro {kp 8} {fi 8};/macro {kp 9} {fi 9};/macro {kp 0} {fi 10};} {fimac}
@@ -13,10 +12,6 @@
 
 /alias {filion} {/macro {kp 1} {fi 1;li 1};/macro {kp 2} {fi 2;li 2};/macro {kp 3} {fi 3;li 3};/macro {kp 4} {fi 4;li 4};/macro {kp 5} {fi 5;li 5};/macro {kp 6} {fi 6;li 6};/macro {kp 7} {fi 7;li 7};/macro {kp 8} {fi 8;li 8};/macro {kp 9} {fi 9;li 9};/macro {kp 0} {fi 10;li 10};} {filimac}
 /alias {filioff} {unmacnr} {filimac}
-
-
-/alias {f?} {grep Form who} {}
-/action {%1 delivers a critical hit to %0} {moan $1} {crit}
 
 
 
@@ -124,7 +119,7 @@ assoff
 /action {( %0t) strength                 +2 to Strength} {/variable {hrstr} {$0};/variable {str} {1}} {smartspellact}
 /action {( %0t) fireshield               makes you protected by a shield of flame} {/variable {hrfires} {$0};/variable {fires} {1}} {smartspellact}
 /action {( %0t) blurred image            makes you hard to diagnose} {/variable {hrblur} {$0};/variable {blur} {1}} {smartspellact}
-/alias {ssreset} {/variable {detmagic} {1};/variable {blur} {1};/variable {fires} {1};/variable {str} {0};/variable {sanc} {1};/variable {pfc} {0} {smartspell};/variable {pfh} {0} {smartspell};/variable {infra} {0};/variable {pfg} {1} {smartspell};/variable {pfe} {1} {smartspell};/variable {senselife} {0};/variable {detinvis} {0};/variable {lev} {0};/variable {detalign} {0};/variable {armor} {0};/variable {stoneskin} {1};/variable {invis} {0};/variable {bless} {0}} {smartspell}
+/alias {ssreset} {/variable {detmagic} {1};/variable {blur} {1};/variable {fires} {1};/variable {str} {0};/variable {sanc} {1};/variable {pfc} {0} {smartspell};/variable {pfh} {0} {smartspell};/variable {infra} {0};/variable {pfg} {1} {smartspell};/variable {pfe} {1} {smartspell};/variable {senselife} {0};/variable {detinvis} {0};/variable {lev} {0};/variable {detalign} {0};/variable {armor} {0};/variable {stoneskin} {0};/variable {invis} {1};/variable {bless} {0}} {smartspell}
 /variable {blur} {1} {smartspell}
 /variable {fires} {1} {smartspell}
 /variable {str} {0} {smartspell}
@@ -139,8 +134,8 @@ assoff
 /variable {detmagic} {1} {smartspell}
 /variable {detalign} {0} {smartspell}
 /variable {armor} {0} {smartspell}
-/variable {stoneskin} {1} {smartspell}
-/variable {invis} {0} {smartspell}
+/variable {stoneskin} {0} {smartspell}
+/variable {invis} {1} {smartspell}
 /variable {bless} {0} {smartspell}
 /variable {infra} {0} {smartspell}
 
@@ -232,19 +227,6 @@ keepalive2off
 /variable {autospellcurmana} {0}
 /variable {autospellmaxmana} {0}
 
-
-
-/alias {keyhelp} {/showme {@Chr(10)@AnsiReset()@AnsiBold()@ForeCyan()lkey       ----- look at keys on keyring@Chr(10)dkey       ----- drop all keys@Chr(10)gdkey      ----- get all keys from keyring, drop all keys@Chr(10)pkey <key> ----- put <key> onto keyring@Chr(10)apkey      ----- get all keys off the gorund and put all keys into keyring@Chr(10)akey       ----- get all keys off the ground@Chr(10)pakey      ----- put all keys onto keyring@Chr(10)gakey      ----- get all keys from keyring@Chr(10)gkey <key> ----- get <key> from keyring@Chr(10)@AnsiReset()}} {keyring}
-/alias {lkey} {exam keyring} {keyring}
-/alias {dkey} {drop all.key;get keyring} {keyring}
-/alias {gdkey} {gakey;dkey} {keyring}
-/alias {pkey %0} {put $0 keyring} {keyring}
-/alias {apkey} {akey;pakey} {keyring}
-/alias {akey} {get all.key} {keyring}
-/alias {pakey} {put all.key keyring} {keyring}
-/alias {gakey} {get all.key keyring} {keyring}
-/alias {gkey %0} {get $0 keyring} {keyring}
-
 /alias {statsay}{/action {%0/%1hp %2/%3m %4/%5mv %6ac %7hr %8dr %9xp} {say $0/$1hp $2/$3m $4/$5mv $6ac $7hr $8dr $9xp;/unact {%0/%1hp %2/%3m %4/%5mv %6ac %7hr %8dr %9xp}};stat} {statsay2}
 /alias {stattell %0}{/variable {stattell} {$0};/action {%0/%1hp %2/%3m %4/%5mv %6ac %7hr %8dr %9xp} {tell $stattell $0/$1hp $2/$3m $4/$5mv $6ac $7hr $8dr $9xp;/unact {%0/%1hp %2/%3m %4/%5mv %6ac %7hr %8dr %9xp}};stat} {statsay2}
 /alias {statform}{/action {%0/%1hp %2/%3m %4/%5mv %6ac %7hr %8dr %9xp} {ft $0/$1hp $2/$3m $4/$5mv $6ac $7hr $8dr $9xp;/unact {%0/%1hp %2/%3m %4/%5mv %6ac %7hr %8dr %9xp}};stat} {statsay2}
@@ -299,9 +281,9 @@ keepalive2off
 /alias {eatmush} {/3 c create food;/3 get mushroom;/3 eat mushroom;/3 drop mushroom} {}
 /alias {fgold} {get gold all.corpse} {}
 /alias {gmc1} {get map all.corpse} {}
-/alias {find} {gmc1;get gold corpse;se corpse;l i 1.corpse} {}
-/alias {finde} {gmc1;se 1.corpse;se 2.corpse;se 3.corpse;se 4.corpse;get gold all.corpse} {}
-/alias {finder} {gmc1;se 1.corpse;se 2.corpse;se 3.corpse;se 4.corpse;se 5.corpse;se 6.corpse;se 7.corpse;se 8.corpse;se 9.corpse;se 10.corpse;get gold all.corpse} {}
+/alias {find} {gmc1;get gold corpse;se corpse;l i 1.corpse;get trick all.corpse} {}
+/alias {finde} {gmc1;se 1.corpse;se 2.corpse;se 3.corpse;se 4.corpse;get gold all.corpse;get trick all.corpse} {}
+/alias {finder} {gmc1;se 1.corpse;se 2.corpse;se 3.corpse;se 4.corpse;se 5.corpse;se 6.corpse;se 7.corpse;se 8.corpse;se 9.corpse;se 10.corpse;get gold all.corpse;get trick all.corpse} {}
 /alias {formsleep} {order followers sleep} {}
 /alias {formstand} {order followers stand} {}
 /alias {formwake} {order followers wake} {}
@@ -318,16 +300,19 @@ keepalive2off
 
 
 /alias {ltr} {l i trunk} {}
+/alias {otr} {open trunk} {}
 /alias {mikeon} {grep relkin who} {}
 /alias {mymail} {receive} {}
 /alias {od %0} {open door $0} {}
 /alias {og %0} {open gate $0} {}
 /alias {ol} {open locker} {}
+/alais {ll} {look locker} {}
 /alias {opencur} {unlock cur;open cur;drop k} {}
 /alias {opend} {unlock cur d;open cur d; drop k;d} {}
-/alias {otr} {open trunk} {}
+
 /remark {/alias {packup} {put all.true vest;put all.staff vest;put all.eye vest;put all.scr 2.vest;put all.pot 2.vest;put flask vest;put all.rat 2.vest;put all vest;put all 2.vest;put all purse;put all 2.purse;/2 get trans 2.vest;/2 get shape 2.vest;/2 get black 2.vest;get keyring all} {packup}}
-/alias {packup} {put all sack}
+/remakr {/alias {packup} {put all sack}}
+/alias {packup} {put all.true 1.sack;put all.staff 1.sack put all.eye 1.sack;put all.scr 2.sack;put all.pot 2.sack;put flask 1.sack;put all.rat 2.sack;put all 3.sack;put all 4.sack;/2 get trans 2.sack;/2 get shape 2.sack;/2 get black 2.sack;get keyring all} {packup}
 /alias {packup2} {put boots 3.vest;put rope 3.vest;put amulet 3.vest;put aero 3.vest;put mask 3.vest;put crimson 3.vest;put suit 3.vest;wear suit;put sash 3.vest;rem vest;rem 3.vest;put power 3.vest;put belt 3.vest;put all.fort 3.vest;} {packup2}
 /alias {qinfo} {queststat} {}
 /alias {remslend} {rem slender;get shield 3.vest;get scepter 3.vest;wear shield;wear scepter} {}
@@ -337,7 +322,7 @@ keepalive2off
 /alias {sendmail} {@Chr(10)@Chr(10)$G-Cypher$w;\@s} {mail}
 /alias {setprompt2} {prompt %W<%R%h/%H%rhp %G%a/%A%gm %C%v/%V%cmv %M%e%men%W>} {}
 
-
+/alias {useorb} {hold orb;use orb;hold tome} {}
 /alias {uld %0} {unlock door $0} {}
 /alias {ulg %0} {unlock gate $0} {}
 /alias {unstrmode} {get sapphire 3.vest;wear sapphire;put boots 3.vest;get neck 3.vest;rem crimson;wear neck;put crimson 3.vest;get tunic 3.vest;wear tunic;put suit 3.vest;get dragon 3.vest;rem sash;wear dragon;put sash 3.vest;get jar 3.vest;wear jar;put power 3.vest;get beads 3.vest;wear beads;put belt 3.vest;get ring 3.vest;get ring 3.vest;rem ring;rem ring;put fort 3.vest;put fort 3.vest;wear ring;wear ring} {}
@@ -347,7 +332,7 @@ keepalive2off
 /alias {laston} {last thanatos;last vanyel;last gerrerd;last relkin;last sinister;last mindreader;last duncan;last ashram} {}
 /alias {whoon} {grep thanatos who;grep vanyel who;grep gerrerd who;grep relkin who;grep sinister who;grep mindreader who;grep duncan who;grep ashram who} {}
 /alias {whoq} {who -q} {}
-/alias {rebot} {/killall;/read cypher.mm}
+/alias {rebot} {/killall;/read cypher\loader.mm}
 /macro {kp0} {look} {}
 /macro {kp1} {c word} {}
 /macro {kp2} {south} {}
@@ -380,85 +365,9 @@ keepalive2off
 /alias {keepaliveoff} {/disablegroup keepmealive;/showme {@Chr(10)@AnsiReset()@AnsiBold()@ForeCyan()Keep Alive @ForeRed()DISABLED @AnsiReset()}} {keeepmealivecontrol}
 /disablegroup keepmealive
 
-/action {A white aura momentarily surrounds you.} {/variable {sancstatus} {On} {statbar}} {statbar}
-/action {The white aura around your body fades.} {/variable {sancstatus} {Off} {statbar}} {statbar}
-/action {You find a blue orb hidden in the corpse} {/math {Orbs} {$Orbs + 1};/showme {@Chr(10)@AnsiReset()@AnsiBold()@ForeCyan()found a blue orb@Chr(10)@AnsiReset()};get orb all.corpse} {FIND}
-/action {You find a gem of true seeing hidden in the corpse} {/math {Gems} {$Gems + 1};/showme {@Chr(10)@AnsiReset()@AnsiBold()@ForeCyan()found a gem@Chr(10)@AnsiReset()};get true all.corp} {FIND}
-/action {You find an ancient relic of unknown origin hidden} {/math {Relics} {$Relics + 1};/showme {@Chr(10)@AnsiReset()@AnsiBold()@ForeCyan()found a relic@Chr(10)@AnsiReset()};get relic all.corp} {FIND}
-/action {sanctuary                makes you sanctified} {/variable {sancstatus} {On} {statbar}} {statbar}
-/action {Your current summon state is: LPK} {/variable {sumstatus} {LPK} {statbar}} {statbar}
-/action {Your current summon state is: NPK} {/variable {sumstatus} {NPK} {statbar}} {statbar}
-/action {Your current summon state is: CPK} {/variable {sumstatus} {CPK} {statbar}} {statbar}
-/action {Your current summon state is: OFF} {/variable {sumstatus} {OFF} {statbar}} {statbar}
-/action {You can no longer be summoned.} {/variable {sumstatus} {OFF} {statbar}} {statbar}
-/action {You can now be summoned to LPK rooms.} {/variable {sumstatus} {LPK} {statbar}} {statbar}
-/action {You can now be summoned to NPK rooms.} {/variable {sumstatus} {NPK} {statbar}} {statbar}
-/action {You can now be summoned to CPK rooms.} {/variable {sumstatus} {CPK} {statbar}} {statbar}
-/action {You rest your tired bones.} {/variable {mestatus} {Resting} {statbar}} {statbar}
-/action {You sit down and rest your tired bones.} {/variable {mestatus} {Resting} {statbar}} {statbar}
-/action {You awaken, and stand up.} {/variable {mestatus} {Standing} {statbar}} {statbar}
-/action {You stop resting, and stand up.} {/variable {mestatus} {Standing} {statbar}} {statbar}
-/action {You go to sleep.} {/variable {mestatus} {Sleeping} {statbar}} {statbar}
-/action {You are too restless to sleep, and you awaken.} {/variable {mestatus} {Standing} {statbar}} {statbar}
-/action {You stand up.} {/variable {mestatus} {Standing} {statbar}} {statbar}
-/action {You feel very sleepy...  Zzzz.....} {/variable {mestatus} {Sleeping} {statbar}} {statbar}
-/action {You are standing.} {/variable {mestatus} {Standing} {statbar}} {statbar}
-/action {You are sleeping.} {/variable {mestatus} {Sleeping} {statbar}} {statbar}
-/action {You are sitting.} {/variable {mestatus} {Sitting} {statbar}} {statbar}
-/action {You are resting.} {/variable {mestatus} {Resting} {stabar}} {statbar}
-/action {You stop resting, and sit up.} {/variable {mestatus} {Sitting} {statbar}} {statbar}
-/action {You sit down.} {/variable {mestatus} {Sitting} {statbar}} {statbar}
-/action {%8{%0xp lv}{%1/%2hp %3/%4m %5/%6mv %7en}} {/variable {prefix} {$8};/variable {xp} {$0};/variable {curhp} {$1};/variable {maxhp} {$2};/variable {curm} {$3};/variable {maxm} {$4};/variable {curmv} {$5};/variable {maxmv} {$6};/variable {en} {$7};/showme {@AnsiReset()@AnsiBold()$prefix@ForeWhite()[@ForeRed()$curhp/$maxhp@AnsiReset()@ForeRed()hp @AnsiBold()@ForeGreen()$curm/$maxm@AnsiReset()@ForeGreen()m @AnsiBold()@ForeCyan()$curmv/$maxmv@AnsiReset()@ForeCyan()mv @AnsiBold()@ForeMagenta()$en@AnsiReset()@ForeMagenta()en@AnsiBold()@ForeWhite()]@AnsiReset()}} {statbar1}
-/gag {%8{%0xp lv}{%1/%2hp %3/%4m %5/%6mv %7en}} {statbargag1}
-/alias {statgagoff} {/disablegroup statbargag1} {statbar1}
-/alias {statgagon} {/enablegroup statbargag1} {statbar1}
-/alias {promptset1} {prompt %W{%Y%x%yxp lv%W}{%R%h/%H%rhp %G%a/%A%gm %C%v/%V%cmv %M%e%men%W}} {statbar1}
-/alias {resetme} {/variable {mestatus} {Standing} {statbar}} {statbar}
-/alias {resetfinds} {/variable {Relics} {0} {statbar};/variable {Orbs} {0} {statbar};/variable {Gems} {0} {statbar}} {statbar}
-/alias {resetsanc} {/variable {sancstatus} {Off} {statbar}} {statbar}
-/action {hp} {/updatestatusbar} {statbar}
-/event {statbarupdate} {1} {/updatestatusbar} {statbar}
-/baritem {Relics} {Relic: $Relics} {1} {8} {11} {0} {statbar}
-/barseparator {relic} {9} {statbar}
-/baritem {Orbs} {Orbs: $Orbs} {10} {8} {11} {0} {statbar}
-/barseparator {orbs} {17} {statbar}
-/baritem {Gems} {Gems: $Gems} {18} {8} {11} {0} {statbar}
-/barseparator {gems} {25} {statbar}
-/baritem {Sancstat} {Sanc: $sancstatus} {26} {9} {10} {0} {statbar}
-/barseparator {sanc} {35} {statbar}
-/baritem {sumstat} {Sum: $sumstatus} {36} {8} {13} {0} {statbar}
-/barseparator {sum} {44} {statbar}
-/baritem {mestat} {$mestatus} {45} {8} {11} {0} {statbar}
-/barseparator {me} {53} {statbar}
-/baritem {tickstatus} {Tick: $tickstatus} {54} {10} {12} {0} {statbar_tick}
-/barseparator {tick} {64} {statbar_tick}
-/action {Your eyes pop open as someone's life force flows into you.} {/disablebaritem tickstatus;/disablebaritem tick;/disablegroup tickevent;/disablegroup tick2event} {statbar_tick}
-/action {You will remain here for 1 more tick.} {/variable {tick} {75};/enablebaritem tickstatus;/enablebaritem tick;/enablegroup tickevent} {statbar_tick}
-/event {tick} {1} {/math {tick} {$tick-1};/if {$tick=0} {/variable {tickstatus} {TICK};/disablegroup tickevent;/variable {tick2} {0};/enablegroup tick2event} {/variable {tickstatus} {$tick}}} {tickevent}
-/event {tick2} {1} {/math {tick2} {$tick2+1};/if {$tick2=3} {/disablebaritem tickstatus;/disablebaritem tick;/disablegroup tick2event}} {tick2event}
-/disablegroup tickevent
-/disablegroup tick2event
-/disablebaritem tickstatus
-/disablebaritem tick
-/variable {tickstatus} {75} {statbar}
-/variable {mestatus} {Standing} {statbar}
-/variable {sumstatus} {OFF} {statbar}
-/variable {xp} {0} {statbar}
-/variable {sancstatus} {Off} {statbar}
-/variable {Relics} {0} {statbar}
-/variable {Orbs} {0} {statbar}
-/variable {Gems} {0} {statbar}
-/disablegroup statbar1
-/disablegroup statbargag1
-
-/alias {rhtml} {/read HtmlLog2K.mst} {}
-/alias {openlog %1.html} {HtmlLogOpenAppend $1.html} {}
+/alias {rhtml} {/read cypher\HtmlLog2K.mst} {}
+/alias {openlog %1} {HtmlLogOpenAppend $1.html} {}
 /alias {closelog} {HtmlLogClose} {}
 
-/read WherePortal1.00.mm
-/read pk.mm
-/read highlight.mm
-/read find.mm
-/read itemid207.mm
 
 
